@@ -27,7 +27,7 @@ class Conductor:
     def worker(self, urls_tasks):
         tasks = [asyncio.ensure_future(DownloadTask(Report, self.download_path, url, self.client, timeout = 0, concurrency=self.countTask, countBytes=self.countBytes, reports_dict=self.REPORTS).run()) for url in self.urls]
         return tasks
-    async def donloads(self):
+    async def downloads(self):
         print('Starting downloading ...')
         tasks = self.worker(self.urls)
         await asyncio.gather(*tasks)
@@ -39,7 +39,7 @@ class Conductor:
         server_coro = asyncio.start_server(serverObj.run, address, port, loop = self.loop)
         server = asyncio.async(server_coro)
 
-        tasks = loop.run_until_complete(self.donloads())
+        tasks = loop.run_until_complete(self.downloads())
 
         #Закрываем выполненные сопрограммы
         for task in tasks:
