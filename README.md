@@ -1,4 +1,6 @@
 # gdsln
+python 3.6.3
+
 Файл запуска - conductor/conductor.py
 
 В файле confog.py, вписываем переменные(URLS, COUNT_BYTES, COUNT_TASKS, DOWNLOAD_PATH).
